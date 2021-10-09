@@ -47,7 +47,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/img_user"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Repositorio de testeTeste"
+            tools:text="@sample/repositories.json/data/name"
             android:textStyle="bold"/>
 
         <com.google.android.material.textview.MaterialTextView
@@ -60,6 +60,38 @@
             app:layout_constraintTop_toBottomOf="@id/txt_repositorio"
             app:layout_constraintStart_toEndOf="@id/img_user"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Descrição" />
+            tools:text="@sample/repositories.json/data/description" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_lang"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toStartOf="@id/txt_repositorio"
+            app:layout_constraintTop_toBottomOf="@id/txt_descricao"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_star"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintTop_toTopOf="@id/img_lang"
+            app:layout_constraintEnd_toStartOf="@id/chip_fork"
+            app:chipBackgroundColor="@android:color/transparent"
+            app:chipIcon="@android:drawable/btn_star_big_on"
+            tools:text="@sample/repositories.json/data/stargazers_count" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_fork"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintTop_toTopOf="@id/img_lang"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:chipBackgroundColor="@android:color/transparent"
+            app:chipIcon="@drawable/ic_fork"
+            app:chipIconTint="#635F5F"
+            tools:text="@sample/repositories.json/data/forks_count" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
