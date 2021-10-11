@@ -2,6 +2,7 @@ package br.com.mkgcriacoes.gitbook
 
 import android.app.Application
 import br.com.mkgcriacoes.gitbook.modules.DataModule
+import br.com.mkgcriacoes.gitbook.modules.DomainModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -11,7 +12,9 @@ class App: Application() {
 
         startKoin {
             androidContext(this@App)
+
             DataModule.load()
+            DomainModule.load()
         }
     }
 }
