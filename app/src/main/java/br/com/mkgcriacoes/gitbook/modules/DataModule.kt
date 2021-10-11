@@ -1,5 +1,8 @@
-package br.com.mkgcriacoes.gitbook.services
+package br.com.mkgcriacoes.gitbook.modules
 
+import br.com.mkgcriacoes.gitbook.repositories.GithubRepository
+import br.com.mkgcriacoes.gitbook.repositories.GithubRepositoryImpl
+import br.com.mkgcriacoes.gitbook.services.GithubService
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -10,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object DataModule {
     fun load(){
-        loadKoinModules(networkModules)
+        loadKoinModules(networkModules + repositoriesModule)
     }
 
     private val networkModules = module {
@@ -34,6 +37,10 @@ object DataModule {
         single {
             criarServico<GithubService>(get(), get())
         }
+    }
+
+    private val repositoriesModule = module {
+        single<GithubRepository> { GithubRepositoryImpl(get()) }
     }
 
     private inline fun <reified T> criarServico(httpClient: OkHttpClient, factory: GsonConverterFactory): T {
