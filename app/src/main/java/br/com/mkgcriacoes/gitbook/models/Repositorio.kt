@@ -14,6 +14,9 @@ class Repositorio {
     @SerializedName("owner")
     var usuario: Usuario? = null
 
+    @SerializedName("language")
+    var linguagem: String? = null
+
     @SerializedName("stargazers_count")
     var estrelas: Int = 0
 

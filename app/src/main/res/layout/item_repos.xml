@@ -53,22 +53,23 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txt_descricao"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_height="0dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="10dp"
             app:layout_constraintTop_toBottomOf="@id/txt_repositorio"
-            app:layout_constraintStart_toEndOf="@id/img_user"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img_user"
+            app:layout_constraintBottom_toTopOf="@id/img_lang"
             tools:text="@sample/repositories.json/data/description" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_lang"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_marginTop="5dp"
-            app:layout_constraintStart_toStartOf="@id/txt_repositorio"
             app:layout_constraintTop_toBottomOf="@id/txt_descricao"
+            app:layout_constraintStart_toStartOf="@id/txt_repositorio"
+            app:layout_constraintBottom_toBottomOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
 
         <com.google.android.material.chip.Chip

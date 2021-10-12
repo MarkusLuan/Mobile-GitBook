@@ -1,5 +1,6 @@
 package br.com.mkgcriacoes.gitbook.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -24,6 +25,8 @@ class RepositorioAdapter: ListAdapter<Repositorio, RepositorioAdapter.ViewHolder
     inner class ViewHolder(
         private val binding: ItemReposBinding
     ): RecyclerView.ViewHolder(binding.root) {
+        private val context: Context = binding.root.context
+
         fun bind(item: Repositorio){
             binding.txtRepositorio.text = item.nome
             binding.txtDescricao.text = item.descricao
@@ -31,9 +34,32 @@ class RepositorioAdapter: ListAdapter<Repositorio, RepositorioAdapter.ViewHolder
             binding.chipFork.text = item.forks.toString()
             binding.chipStar.text = item.estrelas.toString()
 
-            Glide.with(binding.root.context)
+            Glide.with(context)
                 .load(item.usuario?.img)
                 .into(binding.imgUser)
+
+            if (item.linguagem != null && item.linguagem != "") {
+                item.linguagem = item.linguagem?.lowercase()
+                item.linguagem = item.linguagem?.replace("++", "plusplus")
+                item.linguagem = item.linguagem?.replace("#", "sharp")
+                item.linguagem = item.linguagem?.replace("javascript", "js")
+                item.linguagem = item.linguagem?.replace("typescript", "ts")
+                item.linguagem = item.linguagem?.replace("-", "_")
+
+                val imgResource = context.resources
+                    .getIdentifier("ic_lang_${item.linguagem}", "drawable", context.packageName)
+
+                Glide.with(context)
+                    .load(imgResource)
+                    .into(binding.imgLang)
+
+                // Baixar imagens em SVG usando o Glide
+//                Log.i("Linguagem_url", "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${item.linguagem}/${item.linguagem}-original.svg")
+//
+//                requestBuilder
+//                    .load("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${item.linguagem}/${item.linguagem}-original.svg")
+//                    .into(binding.imgLang)
+            }
         }
     }
 }
