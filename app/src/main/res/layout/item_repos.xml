@@ -70,7 +70,7 @@
             app:layout_constraintTop_toBottomOf="@id/txt_descricao"
             app:layout_constraintStart_toStartOf="@id/txt_repositorio"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@drawable/ic_lang_kotlin" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_star"
