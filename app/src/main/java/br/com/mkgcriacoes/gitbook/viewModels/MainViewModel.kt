@@ -38,7 +38,7 @@ class MainViewModel(
 
     sealed class State{
         object Carregando: State()
-        data class Sucesso(private val lista: List<Repositorio>): State()
-        data class Erro(private val erro: Throwable): State()
+        data class Sucesso (val lista: List<Repositorio>): State()
+        data class Erro (val erro: Throwable): State()
     }
 }
